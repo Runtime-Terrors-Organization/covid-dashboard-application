@@ -19,5 +19,19 @@ function dropDown() {
   });
 };
 
+$(".region-dropdown").on("change", displayData);
+function displayData() {
+  var locationId = $(this).val();
+
+  var apiUrlRegionData = `https://api.covid19tracker.ca/reports/regions/${locationId}`;
+  fetch(proxyUrl + apiUrlRegionData)
+  .then(function(response) {
+    if (response.ok) {
+      response.json().then(function(text) {
+        console.log(text);
+      })
+    }
+  })
+};
 
 dropDown();
