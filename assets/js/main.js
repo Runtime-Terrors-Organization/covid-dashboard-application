@@ -42,6 +42,25 @@ var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
 					
 				})
 			}
-		})
+		});
 	
 
+function dropDown() {
+  var apiUrlRegions = "https://api.covid19tracker.ca/regions";
+	fetch(proxyUrl + apiUrlRegions)
+		.then(function(response) {
+			if (response.ok) {
+				response.json().then(function(text) {
+					console.log(text);
+
+				for(var i = 0; i < text.data.length; i++) {
+          $(".region-dropdown").append(`
+          <option value=${text.data[i].hr_uid}>${text.data[i].engname}</option>
+          `)
+        };
+      })
+    }
+  });
+};
+
+dropDown();
