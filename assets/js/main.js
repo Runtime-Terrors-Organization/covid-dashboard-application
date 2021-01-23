@@ -1,9 +1,3 @@
-var proxyUrl = "https://sheltered-ocean-70759.herokuapp.com/";
-var regionFocus = ["3595", "3570", "3553"];
-
-function dropDown() {
-  var apiUrlRegions = "https://api.covid19tracker.ca/regions";
-	fetch(proxyUrl + apiUrlRegions)
 
 let map;
 
@@ -16,11 +10,12 @@ function initMap() {
         zoom: 8,
     });
 }
-  
- 
-// Variable to hold todays date for comparison
+
 var todaysDate = moment().format('YYYY[-]MM[-]DD');
 console.log(todaysDate);
+
+
+
 
 
 
@@ -29,7 +24,30 @@ var proxyUrl = "https://sheltered-ocean-70759.herokuapp.com/"
 var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
 
 	fetch(proxyUrl + apiUrl)
+		.then(function(response) {
+			if (response.ok) {
+				response.json().then(function(text) {
+					console.log(text);
+					console.log(text.data.length);
+					//For loop to compare current date to date in API
+					
+					for(var i = 360; i < text.data.length; i++) {
+						var dates = text.data[i].date;
+						console.log(dates);
+						if ( dates === todaysDate) {
+							console.log("matched")
+						}
+					}
+					
+					
+				})
+			}
+		});
+	
 
+function dropDown() {
+  var apiUrlRegions = "https://api.covid19tracker.ca/regions";
+	fetch(proxyUrl + apiUrlRegions)
 		.then(function(response) {
 			if (response.ok) {
 				response.json().then(function(text) {
@@ -45,24 +63,4 @@ var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
   });
 };
 
-
 dropDown();
-
-					console.log(text.data.length);
-					//For loop to compare current date to date in API
-					
-					for(var i = 360; i < text.data.length; i++) {
-						var dates = text.data[i].date;
-						console.log(dates);
-						if ( dates === todaysDate) {
-							console.log("matched")
-						}
-					}
-					
-					
-				})
-			}
-		})
-	
-
-
