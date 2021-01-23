@@ -1,2 +1,2 @@
-# covid-dashboard-application
-A dashboard to display positive news about Covid-19. 
+# Positive-Covid-Dashboard
+A dashboard geared towards showing positive progress in the fight against covid-19
