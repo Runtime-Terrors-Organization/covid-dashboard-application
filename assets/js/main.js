@@ -43,7 +43,6 @@ var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
 				})
 			}
 		});
-	
 
 function dropDown() {
   var apiUrlRegions = "https://api.covid19tracker.ca/regions";
