@@ -72,6 +72,13 @@ function displayData() {
     if (response.ok) {
       response.json().then(function(text) {
         console.log(text);
+
+        for(var i = 360; i < text.data.length; i++) {
+          var date = text.data[i].date;
+          if ( date === todaysDate) {
+            console.log(text.data[i])
+          }
+        }
       })
     }
   })
