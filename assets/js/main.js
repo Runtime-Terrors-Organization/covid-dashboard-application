@@ -20,8 +20,7 @@ var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
 
 fetch(proxyUrl + apiUrl)
 	.then(function(response) {
-	  if (response.ok) {
-		  response.json().then(function(text) {
+    if (response.ok) {response.json().then(function(text) {
 				console.log(text);
 				console.log(text.data.length);
 				//For loop to compare current date to date in API
@@ -112,8 +111,12 @@ function displayData() {
           var date = text.data[i].date;
           if ( date === todaysDate) {
             console.log(text.data[i]);
+
+            var totalCases = parseInt(text.data[i].total_cases);
+            var totalRecoveries = parseInt(text.data[i].total_recoveries);
+            var activeCases = totalCases - totalRecoveries;
             $(".total-cases").append(`${text.data[i].total_cases}`);
-            $(".change-cases").append(`${text.data[i].change_cases}`);
+            $(".active-cases").append(activeCases);
             $(".total-regionRecoveries").append(`${text.data[i].total_recoveries}`);
           };
         };
