@@ -1,14 +1,21 @@
 let map;
+let longitude = -79.8026284
+let latitude = 43.9009643
+    // let queryLocation = $(".region-title").text(`${text.data[i].engname}`)
+    // console.log(queryLocation);
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: {
-            lat: 43.9009643,
-            lng: -79.8026284
+            lat: latitude,
+            lng: longitude
         },
         zoom: 8,
     });
 }
+
+
+
 
 var todaysDate = moment().format('YYYY[-]MM[-]DD');
 console.log(todaysDate);
@@ -50,9 +57,7 @@ function dropDown() {
                         var unitID = text.data[i].hr_uid;
                         if (unitID === 3553 || unitID === 3570 || unitID === 3595) {
                             $(".region-dropdown").append(`<option value=${text.data[i].hr_uid}>${text.data[i].engname}</option>`)
-                        } else {
-                            $(".extraRegionContainer").append(`<option value=${text.data[i].hr_uid}>${text.data[i].engname}</option>`)
-                        };
+                        }
                     }
                 })
             }
@@ -93,10 +98,14 @@ function displayData() {
         .then(function(response) {
             if (response.ok) {
                 response.json().then(function(text) {
-                    console.log(text);
                     for (var i = 0; i < text.data.length; i++) {
                         if (text.data[i].hr_uid == locationId) {
-                            $(".region-title").append(`${text.data[i].engname}`)
+                            $(".region-title").text(`${text.data[i].engname}`);
+                            var regionTitle = $(".region-title").text();
+                            var regionTitle = regionTitle.replace('Health Unit', '');
+                            var regionTitle = regionTitle.replace('Regional', 'region');
+                            console.log(regionTitle);
+                            return regionTitle;
                         };
                     }
                 });
