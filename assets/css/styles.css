@@ -85,7 +85,7 @@ section > div {
 }
 
 /* glass effect */
- /* padding from tailwind is causing clopping issues */
+/* padding from tailwind is causing clopping issues */
 header,
 .dropdown,
 .map,
