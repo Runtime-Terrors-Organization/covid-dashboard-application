@@ -1,4 +1,3 @@
-
 let map;
 
 function initMap() {
@@ -62,9 +61,47 @@ function dropDown() {
   });
 };
 
+function provincialData() {
+  var apiUrlProvincialData = `https://api.covid19tracker.ca/reports/province/on`;
+  fetch(proxyUrl + apiUrlProvincialData)
+  .then(function(response) {
+    if (response.ok) {
+      response.json().then(function(text) {
+        console.log(text);
+
+        for(var i = 360; i < text.data.length; i++) {
+          var date = text.data[i].date;
+          if ( date === todaysDate) {
+            console.log(text.data[i]);
+            $(".total-recoveries").append(`${text.data[i].total_recoveries}`);
+            $(".total-vaccinations").append(`${text.data[i].total_vaccinations}`);
+            $(".total-vaccinated").append(`${text.data[i].total_vaccinated}`);
+          };
+        };
+      })
+    };
+  })
+};
+
 $(".region-dropdown").on("change", displayData);
+
 function displayData() {
   var locationId = $(this).val();
+
+  var apiUrlRegions = "https://api.covid19tracker.ca/regions";
+  fetch(proxyUrl + apiUrlRegions)
+	.then(function(response) {
+		if (response.ok) {
+			response.json().then(function(text) {
+        console.log(text);
+        for (var i = 0; i < text.data.length; i++) {
+          if (text.data[i].hr_uid == locationId) {
+          $(".region-title").append(`${text.data[i].engname}`)
+          };
+        }
+      });
+    };
+  })
 
   var apiUrlRegionData = `https://api.covid19tracker.ca/reports/regions/${locationId}`;
   fetch(proxyUrl + apiUrlRegionData)
@@ -86,5 +123,7 @@ function displayData() {
     };
   })
 };
+
+provincialData();
 
 dropDown();
