@@ -79,4 +79,3 @@ function displayData() {
 };
 
 dropDown();
-dropDown();
