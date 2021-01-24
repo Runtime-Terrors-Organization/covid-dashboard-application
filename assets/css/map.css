@@ -1,0 +1,168 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+#map {
+    height: 100%;
+}
+.slide-image {
+    width: 100%;
+}
+ 
+.carousel-holder {
+    margin-bottom: 30px;
+}
+ 
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+ 
+.caption {
+    height: 130px;
+    overflow: hidden;
+}
+ 
+    .caption h4 {
+        white-space: nowrap;
+    }
+ 
+.thumbnail img {
+    width: 100%;
+}
+ 
+.addToCart {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+ 
+.thumbnail {
+    padding: 0;
+}
+ 
+    .thumbnail .caption-full {
+        padding: 9px;
+        color: #333;
+    }
+ 
+footer {
+    margin: 50px 0;
+}
+ 
+.navbar {
+    background-image: none;
+}
+ 
+.navbar-inverse {
+    background-color: #a593c2;
+    border-color: #a593c2;
+}
+ 
+.nav.navbar-nav.navbar-right li a {
+    color: white;
+    font-size: 1.2em;
+}
+ 
+.navbar .nav > li > a {
+    font-size: 1.2em;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    color: white;
+}
+ 
+.carousel .item {
+    height: 400px;
+}
+ 
+.item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 400px;
+}
+ 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    background-color: #fcaeae !important;
+    border-color: #fba1a1 !important;
+}
+ 
+.btn {
+    background-color: #fcaeae !important;
+    border-color: #fba1a1 !important;
+}
+ 
+ 
+ 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+ 
+.navbar {
+    margin-left: -15px;
+    margin-right: -15px;
+    overflow: hidden;
+    background-color: #333;
+}
+ 
+    .navbar a {
+        float: left;
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+ 
+.subnav {
+    float: left;
+    overflow: hidden;
+}
+ 
+    .subnav .subnavbtn {
+        font-size: 16px;
+        border: none;
+        outline: none;
+        color: white;
+        padding: 14px 16px;
+        background-color: #99A3A4;
+        font-family: inherit;
+        margin: 0;
+    }
+ 
+    .navbar a:hover, .subnav:hover .subnavbtn {
+        background-color: #CB4335;
+    }
+ 
+.subnav-content {
+    display: none;
+    left: 0;
+    background-color: #CB4335;
+    width: auto;
+    z-index: 0;
+    position: fixed
+}
+ 
+    .subnav-content a {
+        float: left;
+        color: white;
+        text-decoration: none;
+    }
+ 
+        .subnav-content a:hover {
+            background-color: #eee;
+            color: black;
+        }
+ 
+.subnav:hover .subnav-content {
+    display: block;
+}
+ 
+ 
+#ajaxSpinnerImage {
+    display: none;
+}
