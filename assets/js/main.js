@@ -93,7 +93,7 @@ function displayData() {
         console.log(text);
         for (var i = 0; i < text.data.length; i++) {
           if (text.data[i].hr_uid == locationId) {
-          $(".region-title").append(`${text.data[i].engname}`)
+          $(".region-title").text(`${text.data[i].engname}`)
           };
         }
       });
@@ -115,9 +115,9 @@ function displayData() {
             var totalCases = parseInt(text.data[i].total_cases);
             var totalRecoveries = parseInt(text.data[i].total_recoveries);
             var activeCases = totalCases - totalRecoveries;
-            $(".total-cases").append(`${text.data[i].total_cases}`);
-            $(".active-cases").append(activeCases);
-            $(".total-regionRecoveries").append(`${text.data[i].total_recoveries}`);
+            $(".total-cases").text(`${text.data[i].total_cases}`);
+            $(".active-cases").text(activeCases);
+            $(".total-regionRecoveries").text(`${text.data[i].total_recoveries}`);
           };
         };
       })
