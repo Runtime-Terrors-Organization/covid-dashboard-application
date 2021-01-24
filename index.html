@@ -4,59 +4,69 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Covid Vaccination Dashboard</title>
+  <link rel="stylesheet" href="./assets/css/map.css">
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/src.css">
   <link rel="stylesheet" href="./assets/css/styles.css">
-
+ 
 </head>
 <body>
-  <header><h1>Covid Vaccination Dashboard</h1></header>
-
-  <main>
-    <!-- Main container, start with dropdown to select health region, then map, then cards -->
-    <div class="container">
-      <div class="dropdown">
-        <p>Choose a region:</p>
-        <select name="health-region" class="region-dropdown">
-        </select>
+  <header class="container mx-auto mt-9 text-center text-5xl p-3">
+    <h1>Covid Vaccination Dashboard</h1>
+  </header>
+  <!-- background start-->
+  <section class="z-10 absolute">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+    <div class="circle5"></div>
+    <div class="circle6"></div>
+    <div class="circle7"></div>
+    <div class="circle8"></div>
+  </section>
+  <!-- background end-->
+  <main class="z-50 relative" >
+    <div class="container flex flex-wrap mx-auto">
+        <div class="dropdown w-full mt-12 flex text-center text-3xl p-3">
+          <p class="mr-9 flex-1">Choose a region:</p>
+          <select name="health-region" class="region-dropdown w-full">
+            <option value="default" selected disabled>Region:</option>
+          </select>
       </div>
+      <div  id="map" class="map w-full mt-16"><iframe title="covid-dashboard"></iframe></div>
 
-      <div class="map"><iframe></iframe></div>
-      
-      <!-- Section for provincial information -->
-      <div class="stats-province">
-        <h2 class="stats-title">Provinical Status:</h2>
-        <!-- Cards that will get provincial information from API -->
-        <div class="card-totalRecoveries">
-          <h3 class="card-title">Total Recoveries</h3>
-          <span class="total-recoveries">
-          </span>
+      <div class="stats-province w-full flex-1 mt-28 flex flex-wrap justify-between items-center text-center">
+        <h2 class="stats-title w-full text-xl p-3">Provinical Status:</h2>
+        <div class="card-totalRecoveries flex-1 mt-4 flex flex-wrap justify-between items-center">
+          <h3 class="card-title w-full p-3 mt-4">Total Recoveries</h3>
+          <span class="total-recoveries w-full text-2xl mt-4 w-28 p-6"></span>
         </div>
-        <div class="card-totalVaccinations">
-          <h3 class="card-title">Total Vaccinations</h3>
-          <span class="total-vaccinations"></span>
+        <div class="card-totalVaccinations flex-1 mt-4 flex flex-wrap justify-between items-center">
+          <h3 class="card-title w-full p-3 ml-4 mt-4">Total Vaccinations</h3>
+          <span class="total-vaccinations w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
         </div>
-        <div class="card-totalVaccinated">
-          <h3 class="card-title">Total Vaccinated</h3>
-          <span class="total-vaccinated"></span>
+        <div class="card-totalVaccinated flex-1 mt-4 flex flex-wrap justify-between items-center">
+          <h3 class="card-title w-full p-3 ml-4 mt-4">Total Vaccinated</h3>
+          <span class="total-vaccinated w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
         </div>
       </div>
       
-      <!-- Section for regional information, to appear when map zooms on that particular region (should be as separate div or second row within provincial information to replace original information?) -->
-      <div class="stats-region">
-        <h2 class="stats-title region-title">
-          <!-- Insert region name + status with JS function -->
+      <div class="stats-region flex-1 ml-4 mt-28 flex flex-wrap justify-between items-center text-center">
+        <h2 class="stats-title region-title w-full text-xl p-3">
+          Region: <!-- Insert region name + status with JS function -->
         </h2>
-        <div class="card-totalCases">
-          <h3 class="card-title">Total Cases</h3>
-          <span class="total-cases"></span>
+        <div class="card-totalCases flex-1 mt-4 flex flex-wrap justify-between items-center">
+          <h3 class="card-title w-full p-3 mt-4">Total Known Cases</h3>
+          <span class="total-cases w-full text-2xl mt-4 w-28 p-6"></span>
         </div>
-        <div class="card-changeCases">
-          <h3 class="card-title">Total Recoveries</h3>
-          <span class="change-cases"></span>
+        <div class="card-changeCases flex-1 mt-4 flex flex-wrap justify-between items-center">
+          <h3 class="card-title w-full p-3 ml-4 mt-4">Active Cases</h3>
+          <span class="active-cases w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
         </div>
-        <div class="card-totalRecoveries">
-          <h3 class="card-title">Total Recoveries</h3>
-          <span class="total-regionRecoveries"></span>
+        <div class="card-totalRecoveries flex-1 mt-4 flex flex-wrap justify-between items-center">
+          <h3 class="card-title w-full p-3 ml-4 mt-4">Total Recoveries</h3>
+          <span class="total-regionRecoveries w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
         </div>
       </div>
       </div>
@@ -64,6 +74,8 @@
   </main>
   
   <footer></footer>
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP3EW2jkC49cU57QTv9hED7R3fqIuPlo8&callback=initMap"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="./assets/js/main.js"></script>
 </body>
