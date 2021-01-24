@@ -23,8 +23,6 @@ body {
     
 /* background */
 section > div {
-    width:50px;
-    height:50px;
     border-radius: 100%;
     background-image: linear-gradient(to bottom, #858dff1c,#a3a9ff13),
     linear-gradient(to bottom,#8189ff59,#8189ff0e);
@@ -99,7 +97,6 @@ header,
 .total-cases,
 .change-cases,
 .total-regionRecoveries {
-   
     border:2px solid;
     border-image-source:linear-gradient(to bottom, #3a408f57,#7d85fd52);
     border-image-slice:2;
