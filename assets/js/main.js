@@ -45,21 +45,26 @@ var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
     });
     
 function dropDown() {
-  var apiUrlRegions = "https://api.covid19tracker.ca/regions";
-	fetch(proxyUrl + apiUrlRegions)
-		.then(function(response) {
-			if (response.ok) {
-				response.json().then(function(text) {
-					console.log(text);
+    var apiUrlRegions = "https://api.covid19tracker.ca/regions";
+    fetch(proxyUrl + apiUrlRegions)
+        .then(function(response) {
+            if (response.ok) {
+                response.json().then(function(text) {
+                    console.log(text);
 
-				for(var i = 0; i < text.data.length; i++) {
-          $(".region-dropdown").append(`
-          <option value=${text.data[i].hr_uid}>${text.data[i].engname}</option>
-          `)
-        };
-      })
-    }
-  });
+                    for (var i = 0; i < text.data.length; i++) {
+
+                        var unitID = text.data[i].hr_uid;
+                        
+                            if (unitID === 3553 || unitID === 3570 || unitID === 3595) {
+                                $(".region-dropdown").append(`<option value=${text.data[i].hr_uid}>${text.data[i].engname}</option>`)
+                            } else {
+                                $(".region-dropdown").append(`<option value=${text.data[i].hr_uid} disabled >${text.data[i].engname}</option>`)
+                            }
+                    };
+                })
+            }
+        });
 };
 
 $(".region-dropdown").on("change", displayData);
