@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +30,7 @@
         <div class="dropdown w-full mt-12 flex text-center text-3xl p-3">
           <p class="mr-9 flex-1">Choose a region:</p>
           <select name="health-region" class="region-dropdown w-full">
-            <option value="default">Region:</option>
+            <option value="default" selected disabled>Region:</option>
           </select>
       </div>
       <div id="map" class="map w-full mt-16"><iframe title="covid-dashboard"></iframe></div>
@@ -40,35 +39,33 @@
         <h2 class="stats-title w-full text-xl p-3">Provinical Status:</h2>
         <div class="card-totalRecoveries flex-1 mt-4 flex flex-wrap justify-between items-center">
           <h3 class="card-title w-full p-3 mt-4">Total Recoveries</h3>
-          <span class="total-recoveries w-full text-2xl mt-4 w-28 p-6">56
-          </span>
+          <span class="total-recoveries w-full text-2xl mt-4 w-28 p-6"></span>
         </div>
         <div class="card-totalVaccinations flex-1 mt-4 flex flex-wrap justify-between items-center">
           <h3 class="card-title w-full p-3 ml-4 mt-4">Total Vaccinations</h3>
-          <span class="total-vaccinations w-full text-2xl ml-4 mt-4 w-28 p-6">1002</span>
+          <span class="total-vaccinations w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
         </div>
         <div class="card-totalVaccinated flex-1 mt-4 flex flex-wrap justify-between items-center">
           <h3 class="card-title w-full p-3 ml-4 mt-4">Total Vaccinated</h3>
-          <span class="total-vaccinated w-full text-2xl ml-4 mt-4 w-28 p-6">800</span>
+          <span class="total-vaccinated w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
         </div>
       </div>
       
       <div class="stats-region flex-1 ml-4 mt-28 flex flex-wrap justify-between items-center text-center">
         <h2 class="stats-title region-title w-full text-xl p-3">
-          <!-- Insert region name + status with JS function -->
-         content here!
+          Region: <!-- Insert region name + status with JS function -->
         </h2>
         <div class="card-totalCases flex-1 mt-4 flex flex-wrap justify-between items-center">
           <h3 class="card-title w-full p-3 mt-4">Total Known Cases</h3>
-          <span class="total-cases w-full text-2xl mt-4 w-28 p-6">2700</span>
+          <span class="total-cases w-full text-2xl mt-4 w-28 p-6"></span>
         </div>
         <div class="card-changeCases flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 ml-4 mt-4">Total Recoveries</h3>
-          <span class="change-cases w-full text-2xl ml-4 mt-4 w-28 p-6">5796</span>
+          <h3 class="card-title w-full p-3 ml-4 mt-4">Active Cases</h3>
+          <span class="active-cases w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
         </div>
         <div class="card-totalRecoveries flex-1 mt-4 flex flex-wrap justify-between items-center">
           <h3 class="card-title w-full p-3 ml-4 mt-4">Total Recoveries</h3>
-          <span class="total-regionRecoveries w-full text-2xl ml-4 mt-4 w-28 p-6">789</span>
+          <span class="total-regionRecoveries w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
         </div>
       </div>
       </div>

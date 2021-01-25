@@ -95,7 +95,7 @@ header,
 .total-vaccinations,
 .total-vaccinated,
 .total-cases,
-.change-cases,
+.active-cases,
 .total-regionRecoveries {
     border:2px solid;
     border-image-source:linear-gradient(to bottom, #3a408f57,#7d85fd52);
