@@ -2,7 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+@media (min-width:360px) {
+    .container {
+       width:100%;
+        font-size: 1.3rem;
+    }
+    .dropdown {
+        width:100%;
+        font-size:0.9rem;
+        padding:10px;
+    }
+    .dropdown p,
+    .dropdown select {
+        flex:1;
+    }
+    .map {
+        width:100%;
+    }
+    .stats-province h2,
+    .stats-region h2 {
+        width:100%;
+        padding:5px;
+    }
+   .stats-province > div,
+   .stats-region > div {
+       flex:1;
+   }
+   .stats-province div > h3,
+   .stats-province span,
+   .stats-region div > h3,
+   .stats-region span {
+       width:100%;
+       font-size:0.8rem;
+       padding:5px;
+   }
+   .stats-region {
+       margin-top:16px;
+   }
 
+
+    
+}
+
+@media (min-width:640px) {
+    .container {
+        @apply w-full;
+    }
+}
 
 * {
     box-sizing:border-box;

@@ -15,8 +15,8 @@ console.log(todaysDate);
 
 
 // Proxy Url deals with a CORS issue when using the Covid API
-var proxyUrl = "https://sheltered-ocean-70759.herokuapp.com/"
-var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
+//var proxyUrl = "https://sheltered-ocean-70759.herokuapp.com/"
+//var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
 
 fetch(proxyUrl + apiUrl)
 	.then(function(response) {
@@ -38,7 +38,7 @@ fetch(proxyUrl + apiUrl)
 
   
 function dropDown() {
-  var apiUrlRegions = "https://api.covid19tracker.ca/regions";
+  //var apiUrlRegions = "https://api.covid19tracker.ca/regions";
 	fetch(proxyUrl + apiUrlRegions)
 		.then(function(response) {
 			if (response.ok) {
@@ -59,7 +59,7 @@ function dropDown() {
 };
 
 function provincialData() {
-  var apiUrlProvincialData = `https://api.covid19tracker.ca/reports/province/on`;
+  //var apiUrlProvincialData = `https://api.covid19tracker.ca/reports/province/on`;
   fetch(proxyUrl + apiUrlProvincialData)
   .then(function(response) {
     if (response.ok) {
@@ -85,7 +85,7 @@ $(".region-dropdown").on("change", displayData);
 function displayData() {
   var locationId = $(this).val();
 
-  var apiUrlRegions = "https://api.covid19tracker.ca/regions";
+  //var apiUrlRegions = "https://api.covid19tracker.ca/regions";
   fetch(proxyUrl + apiUrlRegions)
 	.then(function(response) {
 		if (response.ok) {
@@ -100,7 +100,7 @@ function displayData() {
     };
   })
 
-  var apiUrlRegionData = `https://api.covid19tracker.ca/reports/regions/${locationId}`;
+  //var apiUrlRegionData = `https://api.covid19tracker.ca/reports/regions/${locationId}`;
   fetch(proxyUrl + apiUrlRegionData)
   .then(function(response) {
     if (response.ok) {

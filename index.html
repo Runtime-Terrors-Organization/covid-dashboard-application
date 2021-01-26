@@ -10,7 +10,7 @@
  
 </head>
 <body>
-  <header class="container mx-auto mt-9 text-center text-5xl p-3">
+  <header class="container text-center">
     <h1>Covid Vaccination Dashboard</h1>
   </header>
   <!-- background start-->
@@ -26,46 +26,46 @@
   </section>
   <!-- background end-->
   <main class="z-50 relative" >
-    <div class="container flex flex-wrap mx-auto">
-        <div class="dropdown w-full mt-12 flex text-center text-3xl p-3">
-          <p class="mr-9 flex-1">Choose a region:</p>
-          <select name="health-region" class="region-dropdown w-full">
+    <div class="container flex flex-wrap">
+        <div class="dropdown flex text-center">
+          <p class="mr-9">Choose a region:</p>
+          <select name="health-region" class="region-dropdown">
             <option value="default" selected disabled>Region:</option>
           </select>
       </div>
-      <div id="map" class="map w-full mt-16"><iframe title="covid-dashboard"></iframe></div>
+      <div id="map" class="map "><iframe title="covid-dashboard"></iframe></div>
 
-      <div class="stats-province w-full flex-1 mt-28 flex flex-wrap justify-between items-center text-center">
-        <h2 class="stats-title w-full text-xl p-3">Provinical Status:</h2>
-        <div class="card-totalRecoveries flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 mt-4">Total Recoveries</h3>
-          <span class="total-recoveries w-full text-2xl mt-4 w-28 p-6"></span>
+      <div class="stats-province flex flex-wrap justify-between items-center text-center">
+        <h2 class="stats-title">Provinical Status:</h2>
+        <div class="card-totalRecoveries flex flex-wrap justify-between items-center">
+          <h3 class="card-title">Total Recoveries</h3>
+          <span class="total-recoveries">55</span>
         </div>
-        <div class="card-totalVaccinations flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 ml-4 mt-4">Total Vaccinations</h3>
-          <span class="total-vaccinations w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
+        <div class="card-totalVaccinations flex flex-wrap justify-between items-center">
+          <h3 class="card-title">Total Vaccinations</h3>
+          <span class="total-vaccinations">55</span>
         </div>
-        <div class="card-totalVaccinated flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 ml-4 mt-4">Total Vaccinated</h3>
-          <span class="total-vaccinated w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
+        <div class="card-totalVaccinated flex flex-wrap justify-between items-center">
+          <h3 class="card-title ">Total Vaccinated</h3>
+          <span class="total-vaccinated ">55</span>
         </div>
       </div>
       
-      <div class="stats-region flex-1 ml-4 mt-28 flex flex-wrap justify-between items-center text-center">
-        <h2 class="stats-title region-title w-full text-xl p-3">
+      <div class="stats-region flex flex-wrap justify-between items-center text-center">
+        <h2 class="stats-title region-title">
           Region: <!-- Insert region name + status with JS function -->
         </h2>
-        <div class="card-totalCases flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 mt-4">Total Known Cases</h3>
-          <span class="total-cases w-full text-2xl mt-4 w-28 p-6"></span>
+        <div class="card-totalCases flex flex-wrap justify-between items-center">
+          <h3 class="card-title">Total Known Cases</h3>
+          <span class="total-cases">44</span>
         </div>
-        <div class="card-changeCases flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 ml-4 mt-4">Active Cases</h3>
-          <span class="active-cases w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
+        <div class="card-changeCases flex flex-wrap justify-between items-center">
+          <h3 class="card-title w-full">Active Cases</h3>
+          <span class="active-cases ">66</span>
         </div>
-        <div class="card-totalRecoveries flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 ml-4 mt-4">Total Recoveries</h3>
-          <span class="total-regionRecoveries w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
+        <div class="card-totalRecoveries flex flex-wrap justify-between items-center">
+          <h3 class="card-title">Total Recoveries</h3>
+          <span class="total-regionRecoveries">67</span>
         </div>
       </div>
       </div>
