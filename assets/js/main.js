@@ -1,6 +1,10 @@
 let map;
 let queryLocation = ''
-var location
+var location;
+var apiUrlRegions = "https://api.covid19tracker.ca/regions";
+var proxyUrl = "https://sheltered-ocean-70759.herokuapp.com/"
+//var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
+
 
 
 // let queryLocation = $(".region-title").text(`${text.data[i].engname}`)
@@ -9,7 +13,7 @@ var location
 //initialize Google map 
 function initMap() {
     const myLatlng = { lat: 43.9009643, lng: -79.8026284 }
-    const map = new google.maps.Map(document.getElementById("map"), {
+     map = new google.maps.Map(document.getElementById("map"), {
         center: myLatlng,
         zoom: 10,
     });
@@ -18,29 +22,23 @@ function initMap() {
         query: 'Australia Region',
         fields: ["name", "geometry"],
     };
-    service = new google.maps.places.PlacesService(map);
-    service.findPlaceFromQuery(request, (results, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-            map.setCenter(results[0].geometry.location);
-        }
-    });
+   var service = new google.maps.places.PlacesService;
+    //service.findPlaceFromQuery(request, (results, status) => {
+    //    if (status === google.maps.places.PlacesServiceStatus.OK) {
+    //        map.setCenter(results[0].geometry.location);
+    //    }
+   // });
+    console.log(service);
+
+
 }
-
-
-
-
-
-
-
 
 var todaysDate = moment().format('YYYY[-]MM[-]DD');
 console.log(todaysDate);
 
 
 // Proxy Url deals with a CORS issue when using the Covid API
-var proxyUrl = "https://sheltered-ocean-70759.herokuapp.com/"
-var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
-
+/*
 fetch(proxyUrl + apiUrl)
     .then(function(response) {
         if (response.ok) {
@@ -62,7 +60,6 @@ fetch(proxyUrl + apiUrl)
 
 
 function dropDown() {
-    var apiUrlRegions = "https://api.covid19tracker.ca/regions";
     fetch(proxyUrl + apiUrlRegions)
         .then(function(response) {
             if (response.ok) {
@@ -111,11 +108,6 @@ function displayData() {
 
     // function to change the map location
 
-
-
-
-
-    var apiUrlRegions = "https://api.covid19tracker.ca/regions";
     fetch(proxyUrl + apiUrlRegions)
         .then(function(response) {
             if (response.ok) {
@@ -124,8 +116,8 @@ function displayData() {
                         if (text.data[i].hr_uid == locationId) {
                             $(".region-title").text(`${text.data[i].engname}`);
                             var regionTitle = $(".region-title").text();
-                            var regionTitle = regionTitle.replace('Health Unit', '');
-                            var regionTitle = regionTitle.replace('Regional', 'region');
+                            regionTitle = regionTitle.replace('Health Unit', '');
+                            regionTitle = regionTitle.replace('Regional', 'region');
                             console.log(regionTitle);
                             return regionTitle;
                         };
@@ -161,7 +153,7 @@ function displayData() {
             };
         })
 };
+*/
+//provincialData();
 
-provincialData();
-
-dropDown();
+//dropDown();
