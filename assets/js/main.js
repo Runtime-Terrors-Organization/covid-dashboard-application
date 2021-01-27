@@ -72,8 +72,20 @@ function currentData() {
       }
   });
 }
-var upDateMap = function (newlocation) {
 
+var addMarker = function (region) {
+  var info_window = new google.maps.InfoWindow();
+  const marker = new google.maps.Marker({
+    map,
+    position:region.geometry.location,
+  });
+  google.maps.event.addListener(marker, "click", function(){
+    info_window.setContent(region.name);
+    info_window.open(map)
+  });
+  
+}
+var upDateMap = function (newlocation) {
   const request = {
       query: newlocation,
       fields: ["name", "geometry"],
@@ -81,10 +93,12 @@ var upDateMap = function (newlocation) {
  var service = new google.maps.places.PlacesService(map);
   service.findPlaceFromQuery(request, (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK) {
+      for (var i = 0; i< results.length; i++) {
+        addMarker(results[i]);
+      }
       map.setCenter(results[0].geometry.location);
-
-      
-       
+      map.setZoom(15);
+     
     }
     else {
       //console.log("Undifined");
