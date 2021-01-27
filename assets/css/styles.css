@@ -1,101 +1,163 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@media (min-width:360px) {
+    .container {
+        width:100%;
+        font-size: 1.3rem;
+        margin:auto auto;
+    }
+    .dropdown {
+        width:100%;
+        font-size:0.9rem;
+        padding:10px;
+    }
+    .dropdown select {
+        background-color: #04094d85;
+    }
+    .dropdown p,
+    .dropdown select {
+        flex:1;
+    }
+    .map {
+        width:100%;
+    }
+    .stats-province {
+        width:100%;
+    }
+    .stats-region {
+       margin-top:16px;
+       width:100%;
+   }
+    .stats-province h2,
+    .stats-region h2 {
+        width:100%;
+        padding:5px;
+    }
+   .stats-province > div,
+   .stats-region > div {
+       flex:1;
+   }
+   .stats-province div > h3,
+   .stats-province span,
+   .stats-region div > h3,
+   .stats-region span {
+       width:100%;
+       font-size:0.8rem;
+       padding:5px;
+   }
+   
+}
+
+@media (min-width:640px) {
+    header h1 {
+        font-size:24px;
+    }
+    .container {
+        margin:10px auto 20px auto;
+        width:95%;
+        transition:width 2s ease-out;
+    }
+    .map {
+        margin-top:30px;
+    }
+    .dropdown {
+        font-size:1.2rem;
+    }
+    .stats-province,
+    .stats-region {
+        flex:1;
+        margin-top:36px;
+    }
+    .stats-region {
+        margin-left:10px;
+    }
+    .stats-province div > h3,
+    .stats-region div > h3 {
+        font-size:0.7rem;
+    }
+
+}
+
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 :root {
-    --background--color: #04094D;
-    --text--color: #CC5E39;
+    --background--color:#04094D;
+    --text--color:#CC5E39;
 }
 
 body {
-    color: var(--text--color);
+    color:var(--text--color);
     background: var(--background--color);
-    position: relative;
+    position:relative;
 }
-
-
+    
 /* background */
-
-section>div {
+section > div {
     border-radius: 100%;
-    background-image: linear-gradient(to bottom, #858dff1c, #a3a9ff13), linear-gradient(to bottom, #8189ff59, #8189ff0e);
-    position: absolute;
-    z-index: -1;
+    background-image: linear-gradient(to bottom, #858dff1c,#a3a9ff13),
+    linear-gradient(to bottom,#8189ff59,#8189ff0e);
+    position:absolute;
+    z-index:-1;
 }
-
-.circle1 {
-    width: 120px;
-    height: 120px;
-    top: 130px;
-    left: 2vw;
-    filter: blur(5px);
+.circle1{
+    width:120px;
+    height:120px;
+    top:130px;
+    left:2vw;
+    filter:blur(5px);
 }
-
-.circle2 {
-    top: -2vh;
-    left: 236px;
-    filter: blur(11px);
+.circle2{
+    top:-2vh;
+    left:236px;
+    filter:blur(11px);
 }
-
-.circle3 {
-    top: 0vh;
-    left: 80vw;
-    width: 140px;
-    height: 140px;
+.circle3{
+    top:0vh;
+    left:80vw;
+    width:140px;
+    height:140px;
     filter: blur(3px);
 }
-
-.circle4 {
-    top: 559px;
-    left: 54px;
-    width: 140px;
-    height: 140px;
+.circle4{
+    top:559px;
+    left:54px;
+    width:140px;
+    height:140px;
     filter: blur(3px);
 }
-
-.circle5 {
-    top: 520px;
-    left: 202px;
-    width: 120px;
-    height: 120px;
+.circle5{
+    top:520px;
+    left:202px;
+    width:120px;
+    height:120px;
     filter: blur(8px);
 }
-
-.circle6 {
-    top: 371px;
-    left: 430px;
-    width: 100px;
-    height: 100px;
+.circle6{
+    top:371px;
+    left:430px;
+    width:100px;
+    height:100px;
     filter: blur(3px);
 }
-
-.circle7 {
-    top: 691px;
-    left: -14px;
-    width: 90px;
-    height: 90px;
+.circle7{
+    top:691px;
+    left:-14px;
+    width:90px;
+    height:90px;
     filter: blur(3px);
 }
-
-.circle8 {
-    top: 50vh;
-    left: 80vw;
-    width: 110px;
-    height: 110px;
+.circle8{
+    top:50vh;
+    left:80vw;
+    width:110px;
+    height:110px;
     filter: blur(3px);
 }
-
 
 /* glass effect */
-
-
 /* padding from tailwind is causing clopping issues */
-
 header,
 .dropdown,
 .map,
@@ -107,15 +169,12 @@ header,
 .total-cases,
 .active-cases,
 .total-regionRecoveries {
-    border: 2px solid;
-    border-image-source: linear-gradient(to bottom, #3a408f57, #7d85fd52);
-    border-image-slice: 2;
-    background-image: linear-gradient(to bottom, #858dff1c, #a3a9ff13), linear-gradient(to bottom, #8189ff0c, #8189ff0e);
-    box-shadow: 0px 5px 11px rgba(129, 138, 255, 0.18);
+    border:2px solid;
+    border-image-source:linear-gradient(to bottom, #3a408f57,#7d85fd52);
+    border-image-slice:2;
+    background-image: linear-gradient(to bottom, #858dff1c,#a3a9ff13),
+    linear-gradient(to bottom,#8189ff0c,#8189ff0e);
+    box-shadow:0px 5px 11px rgba(129, 138, 255, 0.18);
     backdrop-filter: blur(15px);
-    border-radius: 5px;
-}
-
-.extraRegionContainer {
-    display: none;
+    border-radius:5px;
 }

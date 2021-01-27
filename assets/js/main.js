@@ -1,9 +1,10 @@
 let map;
-let queryLocation = ''
+let queryLocation = '';
 var location;
+var currentLoc = 'canada Region';
 var apiUrlRegions = "https://api.covid19tracker.ca/regions";
 var proxyUrl = "https://sheltered-ocean-70759.herokuapp.com/"
-//var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
+var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
 
 
 
@@ -19,64 +20,114 @@ function initMap() {
     });
 
     const request = {
-        query: 'Australia Region',
+        query: currentLoc,
         fields: ["name", "geometry"],
     };
-   var service = new google.maps.places.PlacesService;
-    //service.findPlaceFromQuery(request, (results, status) => {
-    //    if (status === google.maps.places.PlacesServiceStatus.OK) {
-    //        map.setCenter(results[0].geometry.location);
-    //    }
-   // });
-    console.log(service);
+   var service = new google.maps.places.PlacesService(map);
+    service.findPlaceFromQuery(request, (results, status) => {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+         map.setCenter(results[0].geometry.location);
+      }
+      else {
+        //
+      }
 
-
+    });
 }
 
 var todaysDate = moment().format('YYYY[-]MM[-]DD');
 console.log(todaysDate);
 
+var setData = function (list, index) {
+  $(".stats-title").append(`${list.province.toUpperCase()}`);
+  $(".total-cases").empty().append(`${list.data[index].total_cases}`);
+  $(".active-cases").empty().append(`${list.data[index].change_cases}`);
+  $(".total-regionRecoveries").empty().append(`${list.data[index].total_recoveries}`);
+                        
+}
 
 // Proxy Url deals with a CORS issue when using the Covid API
-/*
-fetch(proxyUrl + apiUrl)
-    .then(function(response) {
-        if (response.ok) {
-            response.json().then(function(text) {
-                console.log(text);
-                console.log(text.data.length);
-                //For loop to compare current date to date in API
+function currentData() { 
+  fetch(proxyUrl + apiUrl)
+  .then(function(response) {
+      if (response.ok) {
+        response.json().then(function(text) {
+          
+          // check for date alternate
+          let current_index = text.data.length-1;
+          if (text.data[current_index] === todaysDate){
+            //console.log("date is current")
+          }
+          else {
+            //console.log(current_index);
+            //console.log(text);
+            setData(text,current_index);
+          }
 
-                for (var i = 360; i < text.data.length; i++) {
-                    var dates = text.data[i].date;
-                    console.log(dates);
-                    if (dates === todaysDate) {
-                        console.log("matched")
-                    }
-                }
-            })
-        }
-    });
+          
+        })
+      }
+      else {
+        console.log("response is null");
+      }
+  });
+}
+var upDateMap = function (newlocation) {
 
+  const request = {
+      query: newlocation,
+      fields: ["name", "geometry"],
+  };
+ var service = new google.maps.places.PlacesService(map);
+  service.findPlaceFromQuery(request, (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+
+      
+       
+    }
+    else {
+      //console.log("Undifined");
+    }
+    console.dir(service);
+  });
+ }
+ 
+var getRegion = function (data, loc_id){
+  for (var i = 0; i < data.data.length-1; i++) {
+    if (data.data[i].hr_uid == loc_id) {
+      $(".region-title").text(`${data.data[i].engname}`);
+      var regionTitle = $(".region-title").text();
+      upDateMap(regionTitle);
+    }
+  }
+}
 
 function dropDown() {
-    fetch(proxyUrl + apiUrlRegions)
-        .then(function(response) {
-            if (response.ok) {
-                response.json().then(function(text) {
-                    console.log(text);
-
-                    for (var i = 0; i < text.data.length; i++) {
-                        var unitID = text.data[i].hr_uid;
-                        if (unitID === 3553 || unitID === 3570 || unitID === 3595) {
-                            $(".region-dropdown").append(`<option value=${text.data[i].hr_uid}>${text.data[i].engname}</option>`)
-                        }
-                    }
-                })
+  fetch(proxyUrl + apiUrlRegions)
+  .then(function(response) {
+    if (response.ok) {
+      response.json().then(function(text) {
+        for (var i = 0; i < text.data.length; i++) {
+            var unitID = text.data[i].hr_uid;
+            if (unitID === 3553 || unitID === 3570 || unitID === 3595) {
+                $(".region-dropdown").append(`<option value=${text.data[i].hr_uid}>${text.data[i].engname}</option>`);
             }
-        });
+        }
+        // fetch the region secleted by user on dropdown
+       $(".region-dropdown").change( () => {
+         var item_ = $(".region-dropdown").val();
+         getRegion(text,item_);
+       });
+      })
+    }
+  });
 };
 
+
+
+
+/*
 function provincialData() {
     var apiUrlProvincialData = `https://api.covid19tracker.ca/reports/province/on`;
     fetch(proxyUrl + apiUrlProvincialData)
@@ -154,6 +205,7 @@ function displayData() {
         })
 };
 */
+currentData();
 //provincialData();
 
-//dropDown();
+dropDown();
