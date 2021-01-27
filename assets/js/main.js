@@ -1,22 +1,23 @@
 let map;
-let longitude = -79.8026284
-let latitude = 43.9009643
-    // let queryLocation = $(".region-title").text(`${text.data[i].engname}`)
-    // console.log(queryLocation);
+let queryLocation = ''
+var location
 
+
+// let queryLocation = $(".region-title").text(`${text.data[i].engname}`)
+// console.log(queryLocation);
+
+//initialize Google map 
 function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: {
-            lat: latitude,
-            lng: longitude
-        },
-        zoom: 8,
+    const myLatlng = { lat: 43.9009643, lng: -79.8026284 }
+    const map = new google.maps.Map(document.getElementById("map"), {
+        center: myLatlng,
+        zoom: 10,
     });
+
     const request = {
-        query: 'canada',
+        query: 'Australia Region',
         fields: ["name", "geometry"],
     };
-
     service = new google.maps.places.PlacesService(map);
     service.findPlaceFromQuery(request, (results, status) => {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -24,6 +25,10 @@ function initMap() {
         }
     });
 }
+
+
+
+
 
 
 
@@ -99,9 +104,15 @@ function provincialData() {
 
 $(".region-dropdown").on("change", displayData);
 
-function displayData() {
 
+function displayData() {
     var locationId = $(this).val();
+    //create empty string to hold location
+
+    // function to change the map location
+
+
+
 
 
     var apiUrlRegions = "https://api.covid19tracker.ca/regions";
@@ -118,8 +129,11 @@ function displayData() {
                             console.log(regionTitle);
                             return regionTitle;
                         };
+
                     }
+
                 });
+
             };
         })
 

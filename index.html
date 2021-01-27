@@ -30,12 +30,16 @@
     <!-- background end-->
     <main class="z-50 relative">
         <div class="container flex flex-wrap mx-auto">
-            <div class="dropdown w-full mt-12 flex text-center text-3xl p-3">
-                <p class="mr-9 flex-1">Choose a region:</p>
-                <select name="health-region" class="region-dropdown w-full">
+            <form id="region-btn">
+                <div class="dropdown w-full mt-12 flex text-center text-3xl p-3">
+                    <p class="mr-9 flex-1">Choose a region:</p>
+                    <select name="health-region" id="region-dropdown" class="region-dropdown w-full">
             <option value="default" selected disabled>Region:</option>
           </select>
-            </div>
+                    <button type="button">Go to Region</button>
+                </div>
+
+            </form>
             <div id="map" class="map w-full mt-16"><iframe title="covid-dashboard"></iframe></div>
 
             <div class="stats-province w-full flex-1 mt-28 flex flex-wrap justify-between items-center text-center">
