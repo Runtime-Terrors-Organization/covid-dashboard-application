@@ -14,9 +14,9 @@ var todaysDate = moment().format('YYYY[-]MM[-]DD');
 console.log(todaysDate);
 
 
-// Proxy Url deals with a CORS issue when using the Covid API
-//var proxyUrl = "https://sheltered-ocean-70759.herokuapp.com/"
-//var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
+ //Proxy Url deals with a CORS issue when using the Covid API
+var proxyUrl = "https://sheltered-ocean-70759.herokuapp.com/"
+var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
 
 fetch(proxyUrl + apiUrl)
 	.then(function(response) {
@@ -38,7 +38,7 @@ fetch(proxyUrl + apiUrl)
 
   
 function dropDown() {
-  //var apiUrlRegions = "https://api.covid19tracker.ca/regions";
+  var apiUrlRegions = "https://api.covid19tracker.ca/regions";
 	fetch(proxyUrl + apiUrlRegions)
 		.then(function(response) {
 			if (response.ok) {
@@ -50,7 +50,7 @@ function dropDown() {
             if (unitID === 3553 || unitID === 3570 || unitID === 3595) {
                 $(".region-dropdown").append(`<option value=${text.data[i].hr_uid}>${text.data[i].engname}</option>`)
             } else {
-                $(".region-dropdown").append(`<option value=${text.data[i].hr_uid} disabled >${text.data[i].engname}</option>`)
+               // $(".region-dropdown").append(`<option value=${text.data[i].hr_uid} disabled >${text.data[i].engname}</option>`)
             };
           }
         })
@@ -59,7 +59,7 @@ function dropDown() {
 };
 
 function provincialData() {
-  //var apiUrlProvincialData = `https://api.covid19tracker.ca/reports/province/on`;
+  var apiUrlProvincialData = `https://api.covid19tracker.ca/reports/province/on`;
   fetch(proxyUrl + apiUrlProvincialData)
   .then(function(response) {
     if (response.ok) {
@@ -85,7 +85,7 @@ $(".region-dropdown").on("change", displayData);
 function displayData() {
   var locationId = $(this).val();
 
-  //var apiUrlRegions = "https://api.covid19tracker.ca/regions";
+  var apiUrlRegions = "https://api.covid19tracker.ca/regions";
   fetch(proxyUrl + apiUrlRegions)
 	.then(function(response) {
 		if (response.ok) {
@@ -93,14 +93,14 @@ function displayData() {
         console.log(text);
         for (var i = 0; i < text.data.length; i++) {
           if (text.data[i].hr_uid == locationId) {
-          $(".region-title").append(`${text.data[i].engname}`)
+          $(".region-title").text(`${text.data[i].engname}`)
           };
         }
       });
     };
   })
 
-  //var apiUrlRegionData = `https://api.covid19tracker.ca/reports/regions/${locationId}`;
+  var apiUrlRegionData = `https://api.covid19tracker.ca/reports/regions/${locationId}`;
   fetch(proxyUrl + apiUrlRegionData)
   .then(function(response) {
     if (response.ok) {
@@ -115,9 +115,9 @@ function displayData() {
             var totalCases = parseInt(text.data[i].total_cases);
             var totalRecoveries = parseInt(text.data[i].total_recoveries);
             var activeCases = totalCases - totalRecoveries;
-            $(".total-cases").append(`${text.data[i].total_cases}`);
-            $(".active-cases").append(activeCases);
-            $(".total-regionRecoveries").append(`${text.data[i].total_recoveries}`);
+            $(".total-cases").text(`${text.data[i].total_cases}`);
+            $(".active-cases").text(activeCases);
+            $(".total-regionRecoveries").text(`${text.data[i].total_recoveries}`);
           };
         };
       })
