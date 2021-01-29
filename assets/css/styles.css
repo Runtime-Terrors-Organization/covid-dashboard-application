@@ -91,6 +91,7 @@ body {
     color:var(--text--color);
     background: var(--background--color);
     position:relative;
+    font-family: 'Roboto Condensed', sans-serif;
 }
     
 /* background */
