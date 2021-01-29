@@ -39,11 +39,20 @@ var todaysDate = moment().format('YYYY[-]MM[-]DD');
 console.log(todaysDate);
 
 var setData = function (list, index) {
+  //if a case is null get the previous stat
+  // append a prefix previous to it
+
+  // Provincial status
   $(".stats-title").append(`${list.province.toUpperCase()}`);
+  $(".total-recoveries").empty().append(`${list.data[index].total_recoveries}`);
+  $(".total-vaccinations").empty().append(`${list.data[index].total_vaccinations}`);
+  $(".total-vaccinated").empty().append(`${list.data[index].total_vaccinated}`);
+   
+  $(".region-title").append(`${list.province.toUpperCase()}`);
   $(".total-cases").empty().append(`${list.data[index].total_cases}`);
   $(".active-cases").empty().append(`${list.data[index].change_cases}`);
   $(".total-regionRecoveries").empty().append(`${list.data[index].total_recoveries}`);
-                        
+   
 }
 
 // Proxy Url deals with a CORS issue when using the Covid API
@@ -52,6 +61,8 @@ function currentData() {
   .then(function(response) {
       if (response.ok) {
         response.json().then(function(text) {
+
+            console.log(text);
           
           // check for date alternate
           let current_index = text.data.length-1;
