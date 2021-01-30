@@ -5,7 +5,13 @@ var currentLoc = 'canada Region';
 var apiUrlRegions = "https://api.covid19tracker.ca/regions";
 var proxyUrl = "https://sheltered-ocean-70759.herokuapp.com/"
 var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
-
+var todaysDate = moment().format('YYYY[-]MM[-]DD');
+var yesterday = moment().subtract(1, 'days').format('YYYY[-]MM[-]DD');
+var currentHour = moment().format('HH');
+//var currentHour = "9";
+console.log(yesterday);
+console.log(currentHour);
+console.log(todaysDate);
 
 
 // let queryLocation = $(".region-title").text(`${text.data[i].engname}`)
@@ -35,9 +41,9 @@ function initMap() {
     });
 }
 
-var todaysDate = moment().format('YYYY[-]MM[-]DD');
-console.log(todaysDate);
 
+
+/*
 var setData = function (list, index) {
   //if a case is null get the previous stat
   // append a prefix previous to it
@@ -83,7 +89,7 @@ function currentData() {
       }
   });
 }
-
+*/
 var addMarker = function (region) {
   var info_window = new google.maps.InfoWindow();
   const marker = new google.maps.Marker({
@@ -108,7 +114,7 @@ var upDateMap = function (newlocation) {
         addMarker(results[i]);
       }
       map.setCenter(results[0].geometry.location);
-      map.setZoom(15);
+      map.setZoom(12);
      
     }
     else {
@@ -135,7 +141,7 @@ function dropDown() {
       response.json().then(function(text) {
         for (var i = 0; i < text.data.length; i++) {
             var unitID = text.data[i].hr_uid;
-            if (unitID === 3553 || unitID === 3570 || unitID === 3595) {
+            if (unitID > 3000 && unitID < 4000 ) {
                 $(".region-dropdown").append(`<option value=${text.data[i].hr_uid}>${text.data[i].engname}</option>`);
             }
         }
@@ -152,7 +158,7 @@ function dropDown() {
 
 
 
-/*
+
 function provincialData() {
     var apiUrlProvincialData = `https://api.covid19tracker.ca/reports/province/on`;
     fetch(proxyUrl + apiUrlProvincialData)
@@ -162,12 +168,17 @@ function provincialData() {
                     console.log(text);
                     for (var i = 360; i < text.data.length; i++) {
                         var date = text.data[i].date;
-                        if (date === todaysDate) {
+                        if (date === todaysDate && currentHour >= 11) {
                             console.log(text.data[i]);
                             $(".total-recoveries").append(`${text.data[i].total_recoveries}`);
                             $(".total-vaccinations").append(`${text.data[i].total_vaccinations}`);
                             $(".total-vaccinated").append(`${text.data[i].total_vaccinated}`);
-                        };
+                        } else if (date === yesterday && currentHour < 11) {
+                          console.log(text.data[i].date);
+                          $(".total-recoveries").append(`${text.data[i].total_recoveries}`);
+                          $(".total-vaccinations").append(`${text.data[i].total_vaccinations}`);
+                          $(".total-vaccinated").append(`${text.data[i].total_vaccinated}`);
+                        }
                     };
                 })
             };
@@ -203,7 +214,7 @@ function displayData() {
                     console.log(text);
                     for (var i = 360; i < text.data.length; i++) {
                         var date = text.data[i].date;
-                        if (date === todaysDate) {
+                        if (date === todaysDate && currentHour >= 12) {
                             console.log(text.data[i]);
                             var totalCases = parseInt(text.data[i].total_cases);
                             var totalRecoveries = parseInt(text.data[i].total_recoveries);
@@ -211,14 +222,22 @@ function displayData() {
                             $(".total-cases").text(`${text.data[i].total_cases}`);
                             $(".active-cases").text(activeCases);
                             $(".total-regionRecoveries").text(`${text.data[i].total_recoveries}`);
-                        };
+                        } else if (date === yesterday && currentHour < 12) {
+                          console.log(text.data[i].date);
+                          var totalCases = parseInt(text.data[i].total_cases);
+                          var totalRecoveries = parseInt(text.data[i].total_recoveries);
+                          var activeCases = totalCases - totalRecoveries;
+                          $(".total-cases").text(`${text.data[i].total_cases}`);
+                          $(".active-cases").text(activeCases);
+                          $(".total-regionRecoveries").text(`${text.data[i].total_recoveries}`);
+                        }
                     };
                 })
             };
         })
 };
-*/
-currentData();
-//provincialData();
+
+//currentData();
+provincialData();
 
 dropDown();
