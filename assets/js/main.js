@@ -2,9 +2,9 @@ let map;
 let queryLocation = '';
 var location;
 var currentLoc = 'canada Region';
-var apiUrlRegions = "https://api.covid19tracker.ca/regions";
-var proxyUrl = "https://sheltered-ocean-70759.herokuapp.com/"
-var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
+//var apiUrlRegions = "https://api.covid19tracker.ca/regions";
+//var proxyUrl = "https://sheltered-ocean-70759.herokuapp.com/"
+//var apiUrl = "https://api.covid19tracker.ca/reports/province/on";
 
 
 
