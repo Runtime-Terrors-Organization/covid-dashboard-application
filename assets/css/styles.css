@@ -78,6 +78,15 @@
 
 }
 
+#info {
+    padding-top: 10px;
+    
+}
+.date {
+    padding-left: 4px;
+}
+
+
 * {
     box-sizing:border-box;
     margin:0;
