@@ -1,82 +1,3 @@
-@media (min-width:360px) {
-    .container,
-    .footer-head {
-        width:100%;
-        font-size: 1.3rem;
-        margin:auto auto;
-    }
-    .dropdown {
-        width:100%;
-        font-size:24px;
-        padding:10px;
-    }
-    .dropdown select {
-        background-color: #04094d85;
-    }
-    .dropdown p,
-    .dropdown select {
-        flex:1;
-    }
-    .map {
-        width:100%;
-    }
-    .stats-province {
-        width:100%;
-    }
-    .stats-region {
-       margin-top:16px;
-       width:100%;
-   }
-    .stats-province h2,
-    .stats-region h2 {
-        width:100%;
-        padding:5px;
-    }
-   .stats-province > div,
-   .stats-region > div {
-       flex:1;
-   }
-   .stats-province div > h3,
-   .stats-province span,
-   .stats-region div > h3,
-   .stats-region span {
-       width:100%;
-       font-size:0.8rem;
-       padding:5px;
-   }
-   
-}
-
-@media (min-width:640px) {
-    header h1 {
-        font-size:24px;
-    }
-    .container,
-    .footer-head {
-        margin:10px auto 20px auto;
-        width:95%;
-        transition:width 2s ease-out;
-    }
-    .map {
-        margin-top:30px;
-    }
-    .dropdown {
-        font-size:1.2rem;
-    }
-    .stats-province,
-    .stats-region {
-        flex:1;
-        margin-top:36px;
-    }
-    .stats-region {
-        margin-left:10px;
-    }
-    .stats-province div > h3,
-    .stats-region div > h3 {
-        font-size:16px;
-    }
-
-}
 
 #info {
     padding-top: 10px;
@@ -106,6 +27,7 @@ body {
 
 footer {
     border-top:rgba(0, 0, 0, 0.8);
+    padding-bottom: 5px;
 }
     
 .hero {
@@ -120,6 +42,8 @@ footer {
     background-size: cover !important;
     background: linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%), url(../images/background.jpg);
   }
+
+
   h1 {
     font-style: normal;
     font-weight: 900;
@@ -270,4 +194,127 @@ header,
     backdrop-filter: blur(15px);
     border-radius:5px;
     font-weight: 900;
+}
+
+@media (min-width:360px) {
+    .container,
+    .footer-head {
+        width:100%;
+        font-size: 1.3rem;
+        margin:auto auto;
+    }
+    .dropdown {
+        width:100%;
+        font-size:24px;
+        padding:10px;
+        padding-right: 50px;
+        padding-left: 50px;
+    }
+    .dropdown select {
+        background-color: #04094d85;
+        justify-content: flex-start;
+    }
+    .dropdown p,
+    .dropdown select {
+        flex:1;
+        font-size: 15px;
+        justify-content: flex-start;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        
+    }
+    .map {
+        width:100%;
+    }
+    .stats-province {
+        width:100%;
+    }
+    .stats-region {
+       margin-top:16px;
+       width:100%;
+   }
+    .stats-province h2,
+    .stats-region h2 {
+        width:100%;
+        padding:5px;
+    }
+   .stats-province > div,
+   .stats-region > div {
+       flex:1;
+   }
+   .stats-province div > h3,
+   .stats-province span,
+   .stats-region div > h3,
+    .stats-region span {
+       width:100%;
+       font-size:0.8rem;
+       padding:5px;
+   }
+   .stats-region span, .stats-province span {
+       font-size: 22px;
+   }
+
+   
+}
+
+@media (min-width:640px) {
+    header h1 {
+        font-size:24px;
+    }
+    .container,
+    .footer-head {
+        margin:10px auto 20px auto;
+        width:95%;
+        transition:width 2s ease-out;
+    }
+    .map {
+        margin-top:30px;
+    }
+    .dropdown {
+        font-size:1.2rem;
+    }
+    .stats-province,
+    .stats-region {
+        flex:1;
+        margin-top:36px;
+    }
+    .stats-region {
+        margin-left:10px;
+    }
+    .stats-province div > h3,
+    .stats-region div > h3 {
+        font-size:16px;
+    }
+
+}
+
+@media (min-width:640px) {
+    header h1 {
+        font-size:24px;
+    }
+    .container,
+    .footer-head {
+        margin:10px auto 20px auto;
+        width:95%;
+        transition:width 2s ease-out;
+    }
+    .map {
+        margin-top:30px;
+    }
+    .dropdown {
+        font-size:1.2rem;
+    }
+    .stats-province,
+    .stats-region {
+        flex:1;
+        margin-top:36px;
+    }
+    .stats-region {
+        margin-left:10px;
+    }
+    .stats-province div > h3,
+    .stats-region div > h3 {
+        font-size:16px;
+    }
+
 }
