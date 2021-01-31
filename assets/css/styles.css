@@ -97,6 +97,10 @@ body {
     position:relative;
     font-family: 'Roboto Condensed', sans-serif;
 }
+
+footer {
+    border-top:rgba(0, 0, 0, 0.8);
+}
     
 .hero {
     display: flex;
