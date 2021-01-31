@@ -176,11 +176,15 @@ function provincialData() {
                             $(".total-recoveries").append(`${text.data[i].total_recoveries}`);
                             $(".total-vaccinations").append(`${text.data[i].total_vaccinations}`);
                             $(".total-vaccinated").append(`${text.data[i].total_vaccinated}`);
+                            var date = moment().format("dddd MMMM Do YYYY")
+                            $(".date").text(`${date}`);
                         } else if (date === yesterday && currentHour < 11) {
                           console.log(text.data[i].date);
                           $(".total-recoveries").append(`${text.data[i].total_recoveries}`);
                           $(".total-vaccinations").append(`${text.data[i].total_vaccinations}`);
                           $(".total-vaccinated").append(`${text.data[i].total_vaccinated}`);
+                          var date = moment().subtract(1, "days").format("dddd MMMM Do YYYY")
+                          $(".date").text(`${date}`);
                         }
                     };
                 })
@@ -225,6 +229,8 @@ function displayData() {
                             $(".total-cases").text(`${text.data[i].total_cases}`);
                             $(".active-cases").text(activeCases);
                             $(".total-regionRecoveries").text(`${text.data[i].total_recoveries}`);
+                            var date = moment().format("dddd MMMM Do YYYY")
+                            $(".date").text(`${" " + date}`);
                         } else if (date === yesterday && currentHour < 12) {
                           console.log(text.data[i].date);
                           var totalCases = parseInt(text.data[i].total_cases);
@@ -233,6 +239,8 @@ function displayData() {
                           $(".total-cases").text(`${text.data[i].total_cases}`);
                           $(".active-cases").text(activeCases);
                           $(".total-regionRecoveries").text(`${text.data[i].total_recoveries}`);
+                          var date = moment().subtract(1, "days").format("dddd MMMM Do YYYY")
+                          $(".date").text(`${date}`);
                         }
                     };
                 })
