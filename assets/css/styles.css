@@ -1,10 +1,6 @@
 @media (min-width:360px) {
-    header {
-        flex-wrap:wrap;
-        justify-content:space-around;
-        align-items:center;
-    }
-    .container {
+    .container,
+    .footer-head {
         width:100%;
         font-size: 1.3rem;
         margin:auto auto;
@@ -55,7 +51,8 @@
     header h1 {
         font-size:24px;
     }
-    .container {
+    .container,
+    .footer-head {
         margin:10px auto 20px auto;
         width:95%;
         transition:width 2s ease-out;
@@ -221,6 +218,20 @@ section > div {
     filter: blur(3px);
 }
 
+.footer-div {
+    font-size: 1.5rem;
+}
+
+footer h3 {
+    font-size: 1.8rem;
+    padding-bottom: 20px;
+}
+
+.fa-github-square {
+    padding-left: 10px;
+    
+}
+
 /* glass effect */
 /* padding from tailwind is causing clopping issues */
 header,
@@ -235,7 +246,7 @@ header,
 .total-cases,
 .active-cases,
 .total-regionRecoveries,
-.contact {
+.footer-head {
     font-size: 24px;
     border:2px solid;
     border-image-source:linear-gradient(to bottom, #3a408f57,#7d85fd52);
