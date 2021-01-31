@@ -14,6 +14,11 @@ console.log(currentHour);
 console.log(todaysDate);
 
 
+var checkedLocations = JSON.parse(localStorage.getItem("checkedLocations"));
+if (checkedLocations == null) {
+  checkedLocations = []
+};
+
 // let queryLocation = $(".region-title").text(`${text.data[i].engname}`)
 // console.log(queryLocation);
 
@@ -191,6 +196,16 @@ $(".region-dropdown").on("change", displayData);
 function displayData() {
     var locationId = $(this).val();
     //create empty string to hold location
+
+    for (var i = 0; i< checkedLocations.length; i++) {
+      if(locationId === checkedLocations[i].location) {
+        $(".region-title").text(checkedLocations[i].regionName);
+        $(".total-cases").text(checkedLocations[i].totalCase);
+        $(".active-cases").text(checkedLocations[i].totalActive);
+        $(".total-regionRecoveries").text(checkedLocations[i].totalRecovery);          
+      }
+    }
+
     // function to change the map location
     fetch(proxyUrl + apiUrlRegions)
         .then(function(response) {
@@ -209,6 +224,7 @@ function displayData() {
                 });
             };
         })
+
     var apiUrlRegionData = `https://api.covid19tracker.ca/reports/regions/${locationId}`;
     fetch(proxyUrl + apiUrlRegionData)
         .then(function(response) {
@@ -235,6 +251,19 @@ function displayData() {
                           $(".total-regionRecoveries").text(`${text.data[i].total_recoveries}`);
                         }
                     };
+                  var localStats = {
+                    location: locationId,
+                    regionName: $(".region-title").text(),
+                    totalCase: $(".total-cases").text(),
+                    totalActive: $(".active-cases").text(),
+                    totalRecovery: $(".total-regionRecoveries").text()
+                  };
+                  var checkedLocations = JSON.parse(localStorage.getItem("checkedLocations"));
+                  if (checkedLocations == null) {
+                    checkedLocations = []
+                  };
+                  checkedLocations.push(localStats);
+                  localStorage.setItem("checkedLocations", JSON.stringify(checkedLocations));
                 })
             };
         })
