@@ -85,7 +85,7 @@ function currentData() {
         })
       }
       else {
-        console.log("response is null");
+        //console.log("response is null");
       }
   });
 }
@@ -120,7 +120,7 @@ var upDateMap = function (newlocation) {
     else {
       //console.log("Undifined");
     }
-    console.dir(service);
+    //console.dir(service);
   });
  }
  
@@ -139,6 +139,8 @@ function dropDown() {
   .then(function(response) {
     if (response.ok) {
       response.json().then(function(text) {
+
+        // get the region into seclect
         for (var i = 0; i < text.data.length; i++) {
             var unitID = text.data[i].hr_uid;
             if (unitID > 3000 && unitID < 4000 ) {
@@ -150,12 +152,13 @@ function dropDown() {
          var item_ = $(".region-dropdown").val();
          getRegion(text,item_);
        });
+       //console.log(text);
       })
     }
   });
 }
 
-
+ 
 
 
 
