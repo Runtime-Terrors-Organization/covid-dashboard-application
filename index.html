@@ -3,18 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Covid Vaccination Dashboard</title>
-  <link rel="stylesheet" href="./assets/css/map.css">
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/src.css">
-  <link rel="stylesheet" href="./assets/css/styles.css">
+  <title>COVID-19 Vaccination Dashboard</title>
+  <!--Font Awesome / Gstatic Font /Google Font -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.gstatic.com"> 
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,700&display=swap" rel="stylesheet"> 
+  <!--Tailwind Stylesheet-->
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  <!--Map Stylesheet-->
+  <link rel="stylesheet" href="assets/css/map.css">
+  <!--Internal Stylesheet-->
+  <link rel="stylesheet" href="assets/css/styles.css">
  
+  <!--Favicon-->
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon/favicon.svg">
+  <link rel="manifest" href="./assets/images/favicon/site.webmanifest">
+    
 </head>
 <body>
-  <header class="container mx-auto mt-9 text-center text-5xl p-3">
-    <h1>Covid Vaccination Dashboard</h1>
+  <header class="container text-center">
   </header>
-  <!-- background start-->
+  <!--Hero / Jumbotron-->
+  <section class="hero" role="img" aria-label="Image Description">
+    <h1>
+      COVID-19 Vaccination Dashboard
+    </h1>
+      <button type="button" id="submit" class="btn btn-primary" onclick="scrollDown()">Contact Us!</button>
+  </section>
+<br />      
+      
+  <!-- Background Start-->
   <section class="z-10 absolute">
     <div class="circle1"></div>
     <div class="circle2"></div>
@@ -25,58 +45,84 @@
     <div class="circle7"></div>
     <div class="circle8"></div>
   </section>
-  <!-- background end-->
+  <!-- Background End-->
+
+  <!--Dropdown Container-->
   <main class="z-50 relative" >
-    <div class="container flex flex-wrap mx-auto">
-        <div class="dropdown w-full mt-12 flex text-center text-3xl p-3">
-          <p class="mr-9 flex-1">Choose a region:</p>
-          <select name="health-region" class="region-dropdown w-full">
-            <option value="default" selected disabled>Region:</option>
+      <div class="container flex flex-wrap">
+        <div class="dropdown flex text-center">
+            <select name="health-region" class="region-dropdown">
+            <option value="default" selected disabled>Select Region:</option>
           </select>
       </div>
-      <div  id="map" class="map w-full mt-16"><iframe title="covid-dashboard"></iframe></div>
-
-      <div class="stats-province w-full flex-1 mt-28 flex flex-wrap justify-between items-center text-center">
-        <h2 class="stats-title w-full text-xl p-3">Provinical Status:</h2>
-        <div class="card-totalRecoveries flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 mt-4">Total Recoveries</h3>
-          <span class="total-recoveries w-full text-2xl mt-4 w-28 p-6"></span>
-        </div>
-        <div class="card-totalVaccinations flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 ml-4 mt-4">Total Vaccinations</h3>
-          <span class="total-vaccinations w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
-        </div>
-        <div class="card-totalVaccinated flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 ml-4 mt-4">Total Vaccinated</h3>
-          <span class="total-vaccinated w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
+      <!--Map Container-->
+      <div id="map" class="map "><iframe title="covid-dashboard"></iframe></div>
+      <!--Data Source Date Verification-->
+      <div id="info" class="flex flex-wrap">
+        <div class="flex flex-wrap">
+          <p>Data pulled from Covid-19 Tracker API for: </p>
+          <span class="date"> </span>
         </div>
       </div>
-      
-      <div class="stats-region flex-1 ml-4 mt-28 flex flex-wrap justify-between items-center text-center">
-        <h2 class="stats-title region-title w-full text-xl p-3">
-          Region: <!-- Insert region name + status with JS function -->
+  <!--Provincial Stats Container -->
+      <div class="stats-province flex flex-wrap justify-between items-center text-center">
+        <h2 class="stats-title">Provincial Status</h2>
+        <div class="card-totalRecoveries flex flex-wrap justify-between items-center">
+          <h3 class="card-title">Total Recoveries</h3>
+          <span class="total-recoveries"></span>
+        </div>
+        <div class="card-totalVaccinations flex flex-wrap justify-between items-center">
+          <h3 class="card-title">Total Vaccinations</h3>
+          <span class="total-vaccinations"></span>
+        </div>
+        <div class="card-totalVaccinated flex flex-wrap justify-between items-center">
+          <h3 class="card-title">Total Vaccinated</h3>
+          <span class="total-vaccinated"></span>
+        </div>
+      </div>
+   <!--Regional Stats Container -->   
+      <div class="stats-region flex flex-wrap justify-between items-center text-center">
+        <h2 class="region-title">
+          Region <!-- Insert region name + status with JS function -->
         </h2>
-        <div class="card-totalCases flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 mt-4">Total Known Cases</h3>
-          <span class="total-cases w-full text-2xl mt-4 w-28 p-6"></span>
+        <div class="card-totalCases flex flex-wrap justify-between items-center">
+          <h3 class="card-title">Total Cases</h3>
+          <span class="total-cases">0</span>
         </div>
-        <div class="card-changeCases flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 ml-4 mt-4">Active Cases</h3>
-          <span class="active-cases w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
+        <div class="card-changeCases flex flex-wrap justify-between items-center">
+          <h3 class="card-title w-full">Active Cases</h3>
+          <span class="active-cases">0</span>
         </div>
-        <div class="card-totalRecoveries flex-1 mt-4 flex flex-wrap justify-between items-center">
-          <h3 class="card-title w-full p-3 ml-4 mt-4">Total Recoveries</h3>
-          <span class="total-regionRecoveries w-full text-2xl ml-4 mt-4 w-28 p-6"></span>
+        <div class="card-totalRecoveries flex flex-wrap justify-between items-center">
+          <h3 class="card-title">Total Recoveries</h3>
+          <span class="total-regionRecoveries" style="font-size: 20px;">0</span>
         </div>
       </div>
       </div>
     </div>
   </main>
+  <br />
+  <!--Footer-->
+  <footer>
+    <div class= "footer-head flex flex-wrap justify-around items-center">
+      <h3>Contributors</h3>
+    </div>
+    <br />
+    <div class= "footer-div flex flex-wrap justify-around items-center">
+      <p>Nathan McCaw<a href="https://github.com/checkers-GM" target="_blank"><i class="fab fa-github-square"></i></a></p>
+      <p>Allen Lovatt<a href="https://github.com/alovatt83" target="_blank"><i class="fab fa-github-square"></i></a></p>
+      <p>Andaleeb Farooq<a href="https://github.com/cerafinn" target="_blank"><i class="fab fa-github-square"></i></a></p> 
+    </div>
+    <div class= "footer-div flex flex-wrap justify-around items-center">
+      <p>David Stapleton<a href="https://github.com/Dstapleton" target="_blank"><i class="fab fa-github-square"></i></a></p>
+      <p>Jon Shallcross<a href="https://github.com/jshallcross" target="_blank"><i class="fab fa-github-square"></i></a></p>
+    </div>
+  </footer>
+  <!--Script Sources-->
   
-  <footer></footer>
-  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP3EW2jkC49cU57QTv9hED7R3fqIuPlo8&callback=initMap"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDP3EW2jkC49cU57QTv9hED7R3fqIuPlo8&libraries=places&callback=initMap"></script>
   <script src="./assets/js/main.js"></script>
 </body>
 </html>
