@@ -8,6 +8,10 @@ CSS,
 Javascript,
 Jquery
 
+#How to Use
+Please navigate to the link below to see the deployed application
+https://runtime-terrors-organization.github.io/covid-dashboard-application/
+
 # Project Members
 Allen Lovatt, 
 Jon Shallcross, 
