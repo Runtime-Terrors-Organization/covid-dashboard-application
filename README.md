@@ -9,10 +9,10 @@ Javascript
 Jquery
 
 # Project Members
-Allen Lovatt
-Jon Shallcross
-Andaleeb Farooq
-David Stapleton
+Allen Lovatt, 
+Jon Shallcross, 
+Andaleeb Farooq, 
+David Stapleton, 
 Nathan McCaw
 
 # Project GIF
