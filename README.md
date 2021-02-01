@@ -1,5 +1,5 @@
 # Positive-Covid-Dashboard
-A dashboard geared towards showing positive progress in the fight against covid-19
+A dashboard geared towards showing positive progress in the fight against covid-19. Users can view updated provincial vacination data and view regional specific data by using the dropdown menu. 
 
 # Technology Used
 Tailwinds CSS,
