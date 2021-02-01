@@ -8,7 +8,7 @@ CSS,
 Javascript,
 Jquery
 
-#How to Use
+# Where to view the Dashboard
 Please navigate to the link below to see the deployed application
 https://runtime-terrors-organization.github.io/covid-dashboard-application/
 
