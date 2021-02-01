@@ -10,8 +10,17 @@ var todaysDate = moment().format('YYYY[-]MM[-]DD');
 var yesterday = moment().subtract(1, 'days').format('YYYY[-]MM[-]DD');
 var currentHour = moment().format('HH');
 
+function scrollDown(){
+  window.scroll({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+}
+// let queryLocation = $(".region-title").text(`${text.data[i].engname}`)
+// console.log(queryLocation);
 
-// Initialize Google map 
+//initialize Google map 
+
 function initMap() {
     const myLatlng = { lat: 43.9009643, lng: -79.8026284 }
     map = new google.maps.Map(document.getElementById("map"), {
