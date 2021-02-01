@@ -6,7 +6,7 @@ Tailwinds CSS,
 HTML,
 CSS,
 Javascript,
-Jquery,
+Jquery
 
 # Project Members
 Allen Lovatt, 
