@@ -1,7 +1,6 @@
 
 #info {
     padding-top: 10px;
-    
 }
 .date {
     padding-left: 4px;
@@ -245,7 +244,8 @@ header,
    .stats-province div > h3,
    .stats-province span,
    .stats-region div > h3,
-    .stats-region span {
+    .stats-region span,
+    #info {
        width:100%;
        font-size:0.8rem;
        padding:5px;
@@ -284,6 +284,10 @@ header,
     .stats-province div > h3,
     .stats-region div > h3 {
         font-size:16px;
+    }
+    
+    #info {
+        font-size:1.3rem;
     }
 
 }
