@@ -13,7 +13,12 @@ console.log(yesterday);
 console.log(currentHour);
 console.log(todaysDate);
 
-
+function scrollDown(){
+  window.scroll({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+        });
+}
 // let queryLocation = $(".region-title").text(`${text.data[i].engname}`)
 // console.log(queryLocation);
 
