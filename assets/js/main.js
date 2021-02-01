@@ -197,6 +197,7 @@ function displayData() {
     var locationId = $(this).val();
     //create empty string to hold location
 
+    if (checkedLocations !==null) {
     for (var i = 0; i< checkedLocations.length; i++) {
       if(locationId === checkedLocations[i].location) {
         $(".region-title").text(checkedLocations[i].regionName);
@@ -205,6 +206,7 @@ function displayData() {
         $(".total-regionRecoveries").text(checkedLocations[i].totalRecovery);          
       }
     }
+  }
 
     // function to change the map location
     fetch(proxyUrl + apiUrlRegions)
@@ -257,10 +259,6 @@ function displayData() {
                     totalCase: $(".total-cases").text(),
                     totalActive: $(".active-cases").text(),
                     totalRecovery: $(".total-regionRecoveries").text()
-                  };
-                  var checkedLocations = JSON.parse(localStorage.getItem("checkedLocations"));
-                  if (checkedLocations == null) {
-                    checkedLocations = []
                   };
                   checkedLocations.push(localStats);
                   localStorage.setItem("checkedLocations", JSON.stringify(checkedLocations));
