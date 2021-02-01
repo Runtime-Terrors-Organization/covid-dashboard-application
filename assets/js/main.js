@@ -10,17 +10,20 @@ var todaysDate = moment().format('YYYY[-]MM[-]DD');
 var yesterday = moment().subtract(1, 'days').format('YYYY[-]MM[-]DD');
 var currentHour = moment().format('HH');
 
+//local storage variable
+var checkedLocations = JSON.parse(localStorage.getItem("checkedLocations"));
+if (checkedLocations == null) {
+  checkedLocations = []
+};
+
 function scrollDown(){
   window.scroll({
             top: document.body.scrollHeight,
             behavior: 'smooth'
         });
 }
-// let queryLocation = $(".region-title").text(`${text.data[i].engname}`)
-// console.log(queryLocation);
 
 //initialize Google map 
-
 function initMap() {
     const myLatlng = { lat: 43.9009643, lng: -79.8026284 }
     map = new google.maps.Map(document.getElementById("map"), {
@@ -147,6 +150,16 @@ $(".region-dropdown").on("change", displayData);
 function displayData() {
     var locationId = $(this).val();
     //create empty string to hold location
+
+    if(checkedLocations !== null) {
+      for (var i= 0; i < checkedLocations.length; i++) {
+        if(locationId === checkedLocations[i].location) {
+          $(".total-cases").text(checkedLocations[i].totalCase);
+          $(".active-cases").text(checkedLocations[i].totalActive);
+          $(".total-regionRecoveries").text(checkedLocations[i].totalRecovery);
+        }
+      }
+    }
     // function to change the map location
     fetch(proxyUrl + apiUrlRegions)
         .then(function(response) {
@@ -196,6 +209,15 @@ function displayData() {
                           $(".date").text(`${date}`);
                         }
                     };
+                  var localStats = {
+                    location: locationId,
+                    regionName: $(".region-title").text(),
+                    totalCase: $(".total-cases").text(),
+                    totalActive: $(".active-cases").text(),
+                    totalRecovery: $(".total-regionRecoveries").text()
+                  };
+                  checkedLocations.push(localStats);
+                  localStorage.setItem("checkedLocations", JSON.stringify(checkedLocations));
                 })
             };
         })
