@@ -120,19 +120,16 @@ function provincialData() {
         .then(function(response) {
             if (response.ok) {
                 response.json().then(function(text) {
-                    console.log(text);
                     for (var i = 360; i < text.data.length; i++) {
                         var date = text.data[i].date;
                         // if statement to ensure most up to date data is displayed
                         if (date === todaysDate && currentHour >= 11) {
-                            console.log(text.data[i]);
                             $(".total-recoveries").append(`${text.data[i].total_recoveries}`);
                             $(".total-vaccinations").append(`${text.data[i].total_vaccinations}`);
                             $(".total-vaccinated").append(`${text.data[i].total_vaccinated}`);
                             var date = moment().format("dddd MMMM Do YYYY")
                             $(".date").text(`${date}`);
                         } else if (date === yesterday && currentHour < 11) {
-                          console.log(text.data[i].date);
                           $(".total-recoveries").append(`${text.data[i].total_recoveries}`);
                           $(".total-vaccinations").append(`${text.data[i].total_vaccinations}`);
                           $(".total-vaccinated").append(`${text.data[i].total_vaccinated}`);
