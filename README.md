@@ -1,47 +1,24 @@
-# Covid Dashboard Application
+# Positive-Covid-Dashboard
+A dashboard geared towards showing positive progress in the fight against covid-19. Users can view updated provincial vacination data and view regional specific data by using the dropdown menu. 
 
-A dashboard geared towards showing positive progress in the fight against covid-19
+# Technology Used
+Tailwinds CSS,
+HTML,
+CSS,
+Javascript,
+Jquery
 
+# Where to view the Dashboard
+Please navigate to the link below to see the deployed application
+https://runtime-terrors-organization.github.io/covid-dashboard-application/
 
-## General Information
----
-First group project. Group number 3 The Runtime Terrors. Due Sunday January 31st. 
+# Project Members
+Allen Lovatt, 
+Jon Shallcross, 
+Andaleeb Farooq, 
+David Stapleton, 
+Nathan McCaw
 
+# Project GIF
 
-## Deployed Link
----  
-https://runtime-terrors-organization.github.io/covid-dashboard-application
-
-## Screenshot
----
-![SCreenshot of application](./assets/images/screenshot.png)
-
-
-
-
-## Technologies / Libraries 
----
-- HTML
-- CSS
-- JavaScript
-- JQuery
-- Tailwind CSS
-- Moment.js
-- Geocoding API
-- Covid-19 tracker API
-
-
-## Features
----
-- Dashboard renders provincial covid-19 vaccination details
-- Dropdown allows you to get more localized details based on regional health units
-- Map moves with user to the selected health region
-
-
-## Authors
----
-- Allen Lovatt
-- Andaleeb Farooq
-- Nathan McCaw
-- David Stapleton
-- Jon Shallcross
+![](Covid_Dashboard2_GIF.gif)
