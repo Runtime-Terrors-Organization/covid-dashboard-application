@@ -21,4 +21,4 @@ Nathan McCaw
 
 # Project GIF
 
-![](Covid_Dashboard2_GIF.gif)
+![](./assets/images/Covid_Dashboard2_GIF.gif)
