@@ -168,7 +168,7 @@ function displayData() {
                             var regionTitle = $(".region-title").text();
                             regionTitle = regionTitle.replace('Health Unit', '');
                             regionTitle = regionTitle.replace('Regional', 'region');
-                            console.log(regionTitle);
+                            
                             return regionTitle;
                         };
                     }
@@ -181,11 +181,11 @@ function displayData() {
         .then(function(response) {
             if (response.ok) {
                 response.json().then(function(text) {
-                    console.log(text);
+                    
                     for (var i = 360; i < text.data.length; i++) {
                         var date = text.data[i].date;
                         if (date === todaysDate && currentHour >= 12) {
-                            console.log(text.data[i]);
+                            
                             var totalCases = parseInt(text.data[i].total_cases);
                             var totalRecoveries = parseInt(text.data[i].total_recoveries);
                             var activeCases = totalCases - totalRecoveries;
@@ -195,7 +195,7 @@ function displayData() {
                             var date = moment().format("dddd MMMM Do YYYY")
                             $(".date").text(`${" " + date}`);
                         } else if (date === yesterday && currentHour < 12) {
-                          console.log(text.data[i].date);
+                          
                           var totalCases = parseInt(text.data[i].total_cases);
                           var totalRecoveries = parseInt(text.data[i].total_recoveries);
                           var activeCases = totalCases - totalRecoveries;
