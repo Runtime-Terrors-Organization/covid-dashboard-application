@@ -197,17 +197,15 @@ function displayData() {
     var locationId = $(this).val();
     //create empty string to hold location
 
-    if (checkedLocations !==null) {
-    for (var i = 0; i< checkedLocations.length; i++) {
-      if(locationId === checkedLocations[i].location) {
-        $(".region-title").text(checkedLocations[i].regionName);
-        $(".total-cases").text(checkedLocations[i].totalCase);
-        $(".active-cases").text(checkedLocations[i].totalActive);
-        $(".total-regionRecoveries").text(checkedLocations[i].totalRecovery);          
+    if(checkedLocations !== null) {
+      for (var i= 0; i < checkedLocations.length; i++) {
+        if(locationId === checkedLocations[i].location) {
+          $(".total-cases").text(checkedLocations[i].totalCase);
+          $(".active-cases").text(checkedLocations[i].totalActive);
+          $(".total-regionRecoveries").text(checkedLocations[i].totalRecovery);
+        }
       }
     }
-  }
-
     // function to change the map location
     fetch(proxyUrl + apiUrlRegions)
         .then(function(response) {
@@ -226,7 +224,6 @@ function displayData() {
                 });
             };
         })
-
     var apiUrlRegionData = `https://api.covid19tracker.ca/reports/regions/${locationId}`;
     fetch(proxyUrl + apiUrlRegionData)
         .then(function(response) {
